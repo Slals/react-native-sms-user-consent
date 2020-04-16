@@ -54,7 +54,7 @@ public class RNReactNativeSMSUserConsentModule extends ReactContextBaseJavaModul
    public void listenOTP(final Promise promise) {
        unregisterReceiver();
 
-       if (this.promise != null) {
+       if (this.receiver != null) {
            promise.reject(E_OTP_ERROR, new Error("Reject previous request"));
        }
 
