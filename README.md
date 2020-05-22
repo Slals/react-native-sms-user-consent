@@ -58,8 +58,9 @@ interface SMSMessage {
 }
 
 getSMSMessage = async () => {
+    const senderNumber = "800";
   try {
-    const message: SMSMessage = await SMSUserConsent.listenOTP()
+    const message: SMSMessage = await SMSUserConsent.listenOTP(senderNumber);
   } catch (e) {
     // error
   }
