@@ -51,7 +51,7 @@ public class RNReactNativeSMSUserConsentModule extends ReactContextBaseJavaModul
     }
 
    @ReactMethod
-   public void listenOTP(final Promise promise) {
+   public void listenOTP(String sender,final Promise promise) {
        unregisterReceiver();
 
        if (this.receiver != null) {
@@ -59,7 +59,7 @@ public class RNReactNativeSMSUserConsentModule extends ReactContextBaseJavaModul
        }
 
        this.promise = promise;
-       Task<Void> task = SmsRetriever.getClient(reactContext.getCurrentActivity()).startSmsUserConsent(null);
+       Task<Void> task = SmsRetriever.getClient(reactContext.getCurrentActivity()).startSmsUserConsent(sender);
        task.addOnSuccessListener(new OnSuccessListener<Void>() {
            @Override
            public void onSuccess(Void aVoid) {
