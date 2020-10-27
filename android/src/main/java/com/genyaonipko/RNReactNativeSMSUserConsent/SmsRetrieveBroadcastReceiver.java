@@ -32,12 +32,12 @@ public class SmsRetrieveBroadcastReceiver extends BroadcastReceiver {
             switch (statusCode) {
                 case CommonStatusCodes.SUCCESS:
                     // Get consent intent
-                   try {
-                        Intent consentIntent = extras.getParcelable(SmsRetriever.EXTRA_CONSENT_INTENT);
+                    Intent consentIntent = extras.getParcelable(SmsRetriever.EXTRA_CONSENT_INTENT);
+                    try {
                         this.activity.startActivityForResult(consentIntent, SMS_CONSENT_REQUEST);
-                   } catch (ActivityNotFoundException e) {
+                    } catch (ActivityNotFoundException e) {
                        // Handle the exception ...
-                   }
+                    }
                     break;
                 case CommonStatusCodes.TIMEOUT:
                     // Time out occurred, handle the error.
