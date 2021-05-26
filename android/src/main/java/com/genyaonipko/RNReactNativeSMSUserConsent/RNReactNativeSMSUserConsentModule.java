@@ -88,8 +88,12 @@ public class RNReactNativeSMSUserConsentModule extends ReactContextBaseJavaModul
 
     private void unregisterReceiver() {
         if (receiver != null) {
-            reactContext.getCurrentActivity().unregisterReceiver(receiver);
-            receiver = null;
+            try {
+                reactContext.getCurrentActivity().unregisterReceiver(receiver);
+                receiver = null;
+            } catch(IllegalStateException e) {
+                // Failed to unregister, mostly it happens when SIM card is not setup
+            }
         }
     }
 
